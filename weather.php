@@ -195,6 +195,72 @@ $city = $data->city->name;
   </div>
 
 
+  <div class="card">
+    
+    <div class="card-body">
+
+      <h5 class="card-title text-muted">
+            <?php
+            
+                echo $city. " - ".$today."<br>";
+                echo $time. "<br>";?>
+            </h5> 
+        <p class="text-center">
+            <?php
+                
+            echo "Temp Max: " .$temp_max. "&deg;C <br>";
+            echo "Temp Min: " .$temp_min. "&deg;C <br>";
+            
+            ?>
+        </p>
+
+        <p class="font-weight-light">
+            <?php
+            echo "Humidity: " .$humidity. "%<br>";
+            echo "Speed of Wind: " .$speed. "km/h<br>";
+            ?>
+        </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+
+
+
+  <div class="card">
+    
+    <div class="card-body">
+
+      <h5 class="card-title text-muted">
+            <?php
+            
+                echo $city. " - ".$today."<br>";
+                echo $time. "<br>";?>
+            </h5> 
+        <p class="text-center">
+            <?php
+                
+            echo "Temp Max: " .$temp_max. "&deg;C <br>";
+            echo "Temp Min: " .$temp_min. "&deg;C <br>";
+            
+            ?>
+        </p>
+
+        <p class="font-weight-light">
+            <?php
+            echo "Humidity: " .$humidity. "%<br>";
+            echo "Speed of Wind: " .$speed. "km/h<br>";
+            ?>
+        </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+</div>
 
 
 
