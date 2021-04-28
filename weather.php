@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,252 +10,283 @@
 
 </head>
 <body>
-    
+
+
+
+
 <?php
 $apiKey = "1b52c32c30b2c052309a0edb0b0a03c9";
 //$cityId = "1337179";
 $cityId = "Dhaka";
-$googleApiUrl = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+$url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
 
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_HEADER, 0);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-curl_setopt($ch, CURLOPT_VERBOSE, 0);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-$response = curl_exec($ch);
-
-curl_close($ch);
-$data = json_decode($response);
-//echo "<pre>";
-//print_r($data);
-$currentTime = time();
+$contents = file_get_contents($url);
+$data = json_decode($contents);
 
 
+$data = json_decode($contents);
+echo "<pre>";
+print_r($data);
 
-
-$today = date("F j, Y");
-$time = date( "g:i a");
 $city = $data->city->name;
 
-
-
-
-//$temp_max = $temp_max - 273.15;
-//$temp_min = $temp_min - 273.15;
-
-
 ?>
 
-<h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-
-
-<section class="container mt-5">
-
-<div class="card-group">
-  <div class="card">
-  <?php 
-        $temp_max = $data->list[0]->main->temp_max;
-        $temp_min = $data->list[0]->main->temp_min;
-        $humidity= $data->list[0]->main->humidity;
-        $speed= $data->list[0]->wind->speed;
-
-?>
-    <div class="card-body">
-
-
-        <p class="text-center">
+    <div class="container mt-4"><!--City Part-->
+        <h5 class="card-title text-muted">
             <?php
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
+               echo $city."<br>";?>
+        </h5> 
+    </div>
+
+
+
+<section class="container-fill card-group"; >
+
+
+<div class="card" >
+
+<div class="card-header" >
+    <small class="text-muted"><?php
+    echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+</div>
+<div class="card-body">
+        
+        <p class="container">
+            <?php
+                echo "<br> ";
+                echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
+
             ?>
         </p>
 
-        <p class="font-weight-light">
+        <p class="container">
             <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
+                echo"<br>";
+                echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
             ?>
         </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
+
+</div>    
+
+</div>
 
 
-  <div class="card">
-    
-    <div class="card-body">
+    <div class="card" >
 
-      <h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-        <p class="text-center">
-            <?php
+        <div class="card-header" >
+            <small class="text-muted"><?php
+            echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+        </div>
+        <div class="card-body">
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
-            ?>
-        </p>
-
-        <p class="font-weight-light">
-            <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
-            ?>
-        </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
-
-
-
-  <div class="card">
+                <p class="container">
+                    <?php
+                        echo "<br> ";
+                        echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                        echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
     
-    <div class="card-body">
+                    ?>
+                </p>
 
-      <h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-        <p class="text-center">
-            <?php
+                <p class="container">
+                    <?php
+                        echo"<br>";
+                        echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                        echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+                    ?>
+                </p>
+
+        </div>    
+        
+    </div>
+
+
+ 
+
+    <div class="card" >
+
+        <div class="card-header" >
+            <small class="text-muted"><?php
+            echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+        </div>
+        <div class="card-body">
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
-            ?>
-        </p>
-
-        <p class="font-weight-light">
-            <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
-            ?>
-        </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
+                <p class="container">
+                    <?php
+                        echo "<br> ";
+                        echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                        echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
     
+                    ?>
+                </p>
 
-  <div class="card">
-    
-    <div class="card-body">
+                <p class="container">
+                    <?php
+                        echo"<br>";
+                        echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                        echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+                    ?>
+                </p>
 
-      <h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-        <p class="text-center">
-            <?php
+        </div>    
+        
+    </div>
+
+
+
+
+
+    <div class="card" >
+
+        <div class="card-header" >
+            <small class="text-muted"><?php
+            echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+        </div>
+        <div class="card-body">
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
-            ?>
-        </p>
-
-        <p class="font-weight-light">
-            <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
-            ?>
-        </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
-
-  <div class="card">
+                <p class="container">
+                    <?php
+                        echo "<br> ";
+                        echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                        echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
     
-    <div class="card-body">
+                    ?>
+                </p>
 
-      <h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-        <p class="text-center">
-            <?php
+                <p class="container">
+                    <?php
+                        echo"<br>";
+                        echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                        echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+                    ?>
+                </p>
+
+        </div>    
+        
+    </div>
+
+
+
+
+    <div class="card" >
+
+        <div class="card-header" >
+            <small class="text-muted"><?php
+            echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+        </div>
+        <div class="card-body">
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
-            ?>
-        </p>
-
-        <p class="font-weight-light">
-            <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
-            ?>
-        </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
-
-
-
-  <div class="card">
+                <p class="container">
+                    <?php
+                        echo "<br> ";
+                        echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                        echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
     
-    <div class="card-body">
+                    ?>
+                </p>
 
-      <h5 class="card-title text-muted">
-            <?php
-            
-                echo $city. " - ".$today."<br>";
-                echo $time. "<br>";?>
-            </h5> 
-        <p class="text-center">
-            <?php
+                <p class="container">
+                    <?php
+                        echo"<br>";
+                        echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                        echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+                    ?>
+                </p>
+
+        </div>    
+        
+    </div>
+
+
+    <div class="card" >
+
+        <div class="card-header" >
+            <small class="text-muted"><?php
+            echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+        </div>
+        <div class="card-body">
                 
-            echo "Temp Max: " .$temp_max. "&deg;C <br>";
-            echo "Temp Min: " .$temp_min. "&deg;C <br>";
-            
+                <p class="container">
+                    <?php
+                        echo "<br> ";
+                        echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                        echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
+    
+                    ?>
+                </p>
+
+                <p class="container">
+                    <?php
+                        echo"<br>";
+                        echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                        echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+                    ?>
+                </p>
+
+        </div>    
+        
+    </div>
+
+    <div class="card" >
+
+<div class="card-header" >
+    <small class="text-muted"><?php
+    echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+</div>
+<div class="card-body">
+        
+        <p class="container">
+            <?php
+                echo "<br> ";
+                echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
+
             ?>
         </p>
 
-        <p class="font-weight-light">
+        <p class="container">
             <?php
-            echo "Humidity: " .$humidity. "%<br>";
-            echo "Speed of Wind: " .$speed. "km/h<br>";
+                echo"<br>";
+                echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
             ?>
         </p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
+
+</div>    
+
+</div>
+
+
+<div class="card" >
+
+<div class="card-header" >
+    <small class="text-muted"><?php
+    echo "" .$data->list[0]->dt_txt."<br>";?> </small>
+</div>
+<div class="card-body">
+        
+        <p class="container">
+            <?php
+                echo "<br> ";
+                echo "Max: " .$data->list[0]->main->temp_max. "&deg;C <br> ";
+                echo "Min: " .$data->list[0]->main->temp_min. "&deg;C <br>";
+
+            ?>
+        </p>
+
+        <p class="container">
+            <?php
+                echo"<br>";
+                echo "Humidity: " .$data->list[0]->main->humidity. "%<br>";
+                echo "Wind Speed: ".$data->list[0]->wind->speed. "km/h<br>";
+            ?>
+        </p>
+
+</div>    
 
 </div>
 
