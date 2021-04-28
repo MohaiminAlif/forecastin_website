@@ -11,7 +11,15 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <style>
+        .cardMod{
+            height: 30rem;
+            width: 20rem; 
+        }
+    </style>
 </head>
+
+
 <body>
 
 <?php
@@ -77,8 +85,8 @@ $city = $data->city->name;
     
         <div class="col">
         
-            <div class="card" >
-                <div class="card-body"> 
+            <div class="card cardMod">
+                <div class="card-body" > 
                     
                     <small class="text-muted container">
                         <?php
@@ -114,13 +122,13 @@ $city = $data->city->name;
 
         <div class="col">
         
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[2]->dt_txt;
                         ?>
                     </small>
 
@@ -153,21 +161,21 @@ $city = $data->city->name;
 
         <div class="col">
         
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[3]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[3]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[3]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -175,9 +183,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[3]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[3]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[3]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
@@ -193,21 +201,21 @@ $city = $data->city->name;
 
         <div class="col">
         
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[4]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[4]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[4]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -215,9 +223,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[4]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[4]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[4]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
@@ -235,21 +243,21 @@ $city = $data->city->name;
 
         <div class="col">
             
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[5]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[5]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[5]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -257,9 +265,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[5]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[5]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[5]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
@@ -273,21 +281,21 @@ $city = $data->city->name;
 
         <div class="col">
             
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[6]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[6]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[6]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -295,9 +303,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[6]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[6]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[6]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
@@ -310,21 +318,21 @@ $city = $data->city->name;
 
         <div class="col">
             
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[7]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[7]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[7]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -332,9 +340,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[7]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[7]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[7]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
@@ -349,21 +357,21 @@ $city = $data->city->name;
 
         <div class="col">
             
-            <div class="card" >
+            <div class="card cardMod" >
                 <div class="card-body"> 
                     
                     <small class="text-muted container">
                         <?php
                             
-                            echo $data->list[1]->dt_txt;
+                            echo $data->list[8]->dt_txt;
                         ?>
                     </small>
 
                     <p class="container mt-5">
                         <?php
                             
-                            echo "Max Temp: " .$data->list[1]->main->temp_max. "&deg;C <br> ";
-                            echo "Min Temp: " .$data->list[1]->main->temp_min. "&deg;C <br>";
+                            echo "Max Temp: " .$data->list[8]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[8]->main->temp_min. "&deg;C <br>";
 
                         ?>
                     </p>
@@ -371,9 +379,9 @@ $city = $data->city->name;
                     <p class="container mt-5">
                         <?php
 
-                            echo "Weather: " .$data->list[1]->weather[0]->description. "<br>";
-                            echo "Humidity: " .$data->list[1]->main->humidity. "%<br>";
-                            echo "Wind Speed: ".$data->list[1]->wind->speed. "km/h<br>";
+                            echo "Weather: " .$data->list[8]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[8]->main->humidity. "%<br>";
+                            echo "Wind Speed: ".$data->list[8]->wind->speed. "km/h<br>";
                         ?>
                     </p>
 
