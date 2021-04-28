@@ -13,13 +13,27 @@
 
     <style>
         .cardMod{
-            height: 20rem;
-            width: 15rem; 
+            height: 25rem;
+            width: 10rem; 
         }
 
-        .cUpdate{
-           
+
+        .mainCard{
+            background-image: url('mainCardPic.png');
+            background-size: 72rem;
+            background-position-x: -10rem;
+            
         }
+
+        .neon{
+
+            font-family: 'Warnes', cursive;
+  
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+        }
+
+        
+
     </style>
 </head>
 
@@ -46,15 +60,15 @@ $city = $data->city->name;
 
 ?>
 
-<section class="row" style=" margin-top: 20rem">
+<section class="row" style=" margin-top: 20rem"><!--Left Part-->
     
-    <div class="col" style=" margin-top: -5rem; margin-left:-4rem">
+    <div class="col neon text-dark" style=" margin-top: -5rem; margin-left:-4rem">
 
-        <div class="card container" style="width: 25rem; height: 40rem">
+        <div class="card container mainCard" style="width: 25rem; height: 40rem">
 
             <div class="card-body">               
                 
-                <h5 class="card-title text-muted text-center">
+                <h5 class="card-title text-muted text-center" style="font-weight: bold;">
                     <?php
                         
                     echo $city."<br>";
@@ -83,8 +97,10 @@ $city = $data->city->name;
                 <p class="container " style="margin: 4rem 0 0 ;">
                     <?php
                     echo "Humidity: " .$data2->main->humidity. "%<br> ";
+                    echo "Weather: ".$data2->weather[0]->description. "<br>";
                    
                     ?>
+                    
                 </p>
 
                 <p class="container " style="margin: 5rem 0 0 ;">
@@ -102,7 +118,7 @@ $city = $data->city->name;
                     if($data2->wind->deg == "270")$direction="Due West";
                     if($data2->wind->deg > "270" &&  $data2->wind->deg <= "315")$direction="Due North west";
                     if($data2->wind->deg > "315" &&  $data2->wind->deg <= "360")$direction="Due North west";
-                    echo "direction: " .$direction. "<br> ";
+                    echo "Wind Direction: " .$direction. "<br> ";
                     ?>
                 </p>
 
@@ -112,40 +128,46 @@ $city = $data->city->name;
 
     </div>
 
-    <div class="col">
-        <h3 class="text-muted text-center">Weather forecast for next four days</h3>
+    <div class="col"><!--Right Part-->
+        <div class="card header text-muted text-center" style="width: 38rem ; background-color: #91D8E9">
+        <h4>Weather forecast for the next four days</h4></div>
         <div class="row">
             
             <div class="col-sm2">
             
-                <div class="card cardMod" >
+                <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -15rem;">
+
                     <div class="card-body"> 
-                        <small class="container">  ---Date---------Time <br></small>
-                        <small class="container text-muted">
+
+                       
+                        <small>
                            
                             <?php
                                 
                                 echo $data->list[9]->dt_txt;
                             ?>
+                            <br><br>
                         </small>
 
-                        <p class="container mt-5">
+                        <small>
                             <?php
                                 
                                 echo "Max Temp: " .$data->list[9]->main->temp_max. "&deg;C <br> ";
                                 echo "Min Temp: " .$data->list[9]->main->temp_min. "&deg;C <br>";
 
                             ?>
-                        </p>
+                            <br><br>
+                        </small>
 
-                        <p class="container mt-5">
+                        <small>
                             <?php
 
                                 echo "Weather: " .$data->list[9]->weather[0]->description. "<br>";
-                                echo "Humidity: " .$data->list[9]->main->humidity. "%<br>";
+                                echo "Humidity: " .$data->list[9]->main->humidity. "%<br><br>";
                                 echo "Wind Speed: ".$data->list[9]->wind->speed. "km/h<br>";
                             ?>
-                        </p>
+                            <br>
+                        </small>
 
 
                     </div>    
@@ -158,33 +180,39 @@ $city = $data->city->name;
 
             <div class="col-sm2">
             
-                <div class="card cardMod" >
+                <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -25rem;">
+
                     <div class="card-body"> 
-                    <small class="container">  ---Date---------Time <br></small>
-                        <small class="text-muted container">
-                            <?php
-                                
-                                echo $data->list[17]->dt_txt;
-                            ?>
-                        </small>
 
-                        <p class="container mt-5">
-                            <?php
-                                
-                                echo "Max Temp: " .$data->list[17]->main->temp_max. "&deg;C <br> ";
-                                echo "Min Temp: " .$data->list[17]->main->temp_min. "&deg;C <br>";
+   
+                    <small>
+       
+                     <?php
 
-                            ?>
-                        </p>
+                        echo $data->list[17]->dt_txt;
+                     ?>
+                    <br><br>
+                    </small>
 
-                        <p class="container mt-5">
-                            <?php
+                    <small>
+                        <?php
+                            
+                            echo "Max Temp: " .$data->list[17]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[17]->main->temp_min. "&deg;C <br>";
 
-                                echo "Weather: " .$data->list[17]->weather[0]->description. "<br>";
-                                echo "Humidity: " .$data->list[17]->main->humidity. "%<br>";
-                                echo "Wind Speed: ".$data->list[17]->wind->speed. "km/h<br>";
-                            ?>
-                        </p>
+                        ?>
+                        <br><br>
+                    </small>
+
+                    <small>
+                        <?php
+
+                            echo "Weather: " .$data->list[17]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[17]->main->humidity. "%<br><br>";
+                            echo "Wind Speed: ".$data->list[17]->wind->speed. "km/h<br>";
+                        ?>
+                        <br>
+                    </small>
 
 
                     </div>    
@@ -194,78 +222,91 @@ $city = $data->city->name;
 
             <div class="col-sm2">
                 
-                <div class="card cardMod" >
-                    <div class="card-body"> 
-                        <small class="container">  ---Date---------Time <br></small>
-                        <small class="text-muted container">
-                            <?php
-                                
-                                echo $data->list[25]->dt_txt;
-                            ?>
-                        </small>
+            <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -35rem;">
 
-                        <p class="container mt-5">
-                            <?php
-                                
-                                echo "Max Temp: " .$data->list[25]->main->temp_max. "&deg;C <br> ";
-                                echo "Min Temp: " .$data->list[25]->main->temp_min. "&deg;C <br>";
-
-                            ?>
-                        </p>
-
-                        <p class="container mt-5">
-                            <?php
-
-                                echo "Weather: " .$data->list[25]->weather[0]->description. "<br>";
-                                echo "Humidity: " .$data->list[25]->main->humidity. "%<br>";
-                                echo "Wind Speed: ".$data->list[25]->wind->speed. "km/h<br>";
-                            ?>
-                        </p>
+                <div class="card-body"> 
 
 
-                    </div>    
-                </div>
+                    <small>
 
+                     <?php
+
+                          echo $data->list[25]->dt_txt;
+                     ?>
+                    <br><br>
+                    </small>
+
+                    <small>
+                        <?php
+                            
+                            echo "Max Temp: " .$data->list[25]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[25]->main->temp_min. "&deg;C <br>";
+
+                        ?>
+                        <br><br>
+                    </small>
+
+                    <small>
+                        <?php
+
+                            echo "Weather: " .$data->list[25]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[25]->main->humidity. "%<br><br>";
+                            echo "Wind Speed: ".$data->list[25]->wind->speed. "km/h<br>";
+                        ?>
+                        <br>
+                    </small>
+
+
+                </div>    
             </div>
 
-
-
-            <div class="col-sm2">
-                
-                <div class="card cardMod" >
-                    <div class="card-body"> 
-                    <small class="container">  ---Date---------Time <br></small>
-                        <small class="text-muted container">
-                            <?php
-                                
-                                echo $data->list[33]->dt_txt;
-                            ?>
-                        </small>
-
-                        <p class="container mt-5">
-                            <?php
-                                
-                                echo "Max Temp: " .$data->list[33]->main->temp_max. "&deg;C <br> ";
-                                echo "Min Temp: " .$data->list[33]->main->temp_min. "&deg;C <br>";
-
-                            ?>
-                        </p>
-
-                        <p class="container mt-5">
-                            <?php
-
-                                echo "Weather: " .$data->list[33]->weather[0]->description. "<br>";
-                                echo "Humidity: " .$data->list[33]->main->humidity. "%<br>";
-                                echo "Wind Speed: ".$data->list[33]->wind->speed. "km/h<br>";
-                            ?>
-                        </p>
-
-
-                    </div>    
-                </div>
-            </div>
-        
         </div>
+
+
+
+        <div class="col-sm2">
+                
+            <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -45rem;">
+
+                <div class="card-body"> 
+
+
+                    <small>     
+
+                    <?php
+
+                        echo $data->list[33]->dt_txt;
+                    ?>
+                    <br><br>        
+                    </small>
+
+                    <small> 
+                        <?php
+            
+                            echo "Max Temp: " .$data->list[33]->main->temp_max. "&deg;C <br> ";
+                            echo "Min Temp: " .$data->list[33]->main->temp_min. "&deg;C <br>";
+
+                        ?>
+                        <br><br>
+                    </small>
+
+                    <small>
+                        <?php
+
+                            echo "Weather: " .$data->list[33]->weather[0]->description. "<br>";
+                            echo "Humidity: " .$data->list[33]->main->humidity. "%<br><br>";
+                            echo "Wind Speed: ".$data->list[33]->wind->speed. "km/h<br>";
+                        ?>
+                        <br>
+                    </small>
+
+
+                </div>    
+            </div>
+
+        </div>
+        
+    </div>
 
     </div>
 
