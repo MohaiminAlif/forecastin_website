@@ -29,6 +29,7 @@ $city = $data->city->name;
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +51,7 @@ $city = $data->city->name;
             background-image: url('mainCardPic.png');
             background-size: 72rem;
             background-position-x: -10rem;
+    
             
         }
 
@@ -68,27 +70,25 @@ $city = $data->city->name;
 
 <body>
 
-<?php
-$apiKey = "1b52c32c30b2c052309a0edb0b0a03c9";
-$cityId = "Dhaka";
-$url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+<div><!--Top Text field for Entering city name-->
+    <form class="container mt-4"; method="POST">
+        <div class="my-4">
+            <div>
+                 <h3>Enter Country/City Name</h3>                       
+                <input type="text" class="form-control" name = "cName">
+                
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                
+            </div>
 
-$url2 = "http://api.openweathermap.org/data/2.5/weather?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+        </div>
+    </form>
+</div>
 
-$contents = file_get_contents($url);
-$data = json_decode($contents);
-
-$contents2 = file_get_contents($url2);
-$data2 = json_decode($contents2);
-
-//echo "<pre>";
-//print_r($data);
-
-$city = $data->city->name;
-
-?>
-
-<section class="row" style=" margin-top: 20rem"><!--Left Part-->
+<section class="row" style=" margin-top: 12rem" id="mainPart"><!--Left Part-->
     
     <div class="col neon text-dark" style=" margin-top: -5rem; margin-left:-4rem">
 
@@ -100,14 +100,11 @@ $city = $data->city->name;
                     <?php
                         
                     echo $city."<br>";
-                    echo date("l jS \of F Y h:i:s A") . "<br>";
+
                     ?>
 
-                    <small class="text-muted">
-                        Current Weather Update
-                    </small>
-                </h5>
-    
+                  </h5>
+                <p class="text-center mt-2">Current Weather Update</p>
                 <p class="container mt-5">
                     
                     <?php
@@ -156,12 +153,17 @@ $city = $data->city->name;
 
     </div>
 
-    <div class="col"><!--Right Part-->
+    <div class="col mt-3"><!--Right Part-->
         <div class="card header text-muted text-center" style="width: 38rem ; background-color: #91D8E9">
-        <h4>Weather forecast for the next four days</h4></div>
+        <h5>
+            <?php
+                echo"Weather forecast for the next four days in ".$city; 
+            ?>
+        </h5>
+        </div>
         <div class="row">
             
-            <div class="col-sm2">
+            <div class="col-sm2 mt-2">
             
                 <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -15rem;">
 
@@ -206,7 +208,7 @@ $city = $data->city->name;
 
     
 
-            <div class="col-sm2">
+            <div class="col-sm2 mt-2">
             
                 <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -25rem;">
 
@@ -248,7 +250,7 @@ $city = $data->city->name;
 
             </div>
 
-            <div class="col-sm2">
+            <div class="col-sm2 mt-2">
                 
             <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -35rem;">
 
@@ -292,7 +294,7 @@ $city = $data->city->name;
 
 
 
-        <div class="col-sm2">
+        <div class="col-sm2 mt-2">
                 
             <div class="card cardMod neon text-dark" style= "background-image: url('mainCardPic.png'); background-position-x: -45rem;">
 
