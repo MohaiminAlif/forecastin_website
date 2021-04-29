@@ -1,5 +1,14 @@
 
+<!--Text field info gather part-->
+<?php
+if($_SERVER['REQUEST_METHOD'] == "POST")
+        {   
+        
+            $cityId = $_POST['cName'];
 
+        }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
