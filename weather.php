@@ -10,6 +10,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
 
 ?>
 
+<!--api data decoding part-->
+<?php
+$apiKey = "1b52c32c30b2c052309a0edb0b0a03c9";
+//$cityId = "Dhaka";
+$url = "http://api.openweathermap.org/data/2.5/forecast?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+
+$url2 = "http://api.openweathermap.org/data/2.5/weather?q=" . $cityId . "&lang=en&units=metric&APPID=" . $apiKey;
+
+$contents = file_get_contents($url);
+$data = json_decode($contents);
+
+$contents2 = file_get_contents($url2);
+$data2 = json_decode($contents2);
+
+
+$city = $data->city->name;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
